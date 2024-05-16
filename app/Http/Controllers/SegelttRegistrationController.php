@@ -19,7 +19,7 @@ class SegelttRegistrationController extends Controller
         $this->validator($request->all())->validate();
         $user = $this->create($request->all());
         auth()->login($user);
-        return redirect()->away('http://react-app-url.com/home');
+        return redirect()->away('http://localhost:3000/');
     }
     
     protected function validator(array $data)

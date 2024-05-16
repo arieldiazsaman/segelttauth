@@ -18,7 +18,7 @@ class SegelttLoginController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->away('http://react-app-url.com/home');
+            return redirect()->away('http://localhost:3000/');
         }
 
         return redirect()->back()->with('error', 'Usuario o contraseña no válido.');
