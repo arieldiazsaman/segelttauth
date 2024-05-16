@@ -40,15 +40,27 @@
         .login-form button:hover {
             background-color: #EFF3F4;
         }
+        .form-control {
+            color: white;
+        }
+        .alert-danger {
+            color: red;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <form class="login-form">
-            <input type="text" placeholder="Nombre de usuario" required>
-            <input type="password" placeholder="Contraseña" required>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        <form class="login-form" method="POST" action="{{ url('/segeltt_login') }}">
+            @csrf
+            <input type="text" name="username" placeholder="Nombre de usuario" class="form-control" value="{{ old('username') }}" required>
+            <input type="password" name="password" placeholder="Contraseña" class="form-control" required>
             <button type="submit">Iniciar sesión</button>
-            <p><a href="#">¿Olvidaste tu contraseña?</a> | <a href="#">Crear cuenta</a></p>
+            <p><a href="#">¿Olvidaste tu contraseña?</a> | <a href="{{ url('/segeltt_registratrion') }}">Crear cuenta</a></p>
         </form>
     </div>
 </body>
